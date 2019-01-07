@@ -1,0 +1,55 @@
+{
+    "system": {
+        "dataset": "MSCOCOExtreme",
+        "batch_size": 24,
+        "sampling_function": "kp_detection",
+
+        "train_split": "train",
+        "val_split": "val",
+
+        "learning_rate": 0.00025,
+        "decay_rate": 10,
+
+        "val_iter": 100,
+
+        "opt_algo": "adam",
+        "prefetch_size": 5,
+
+        "max_iter": 250000,
+        "stepsize": 200000,
+        "snapshot": 50000,
+
+        "chunk_sizes": [4, 5, 5, 5, 5],
+
+        "data_dir": "./data",
+
+        "pretrain": "./cache/CornerNet_500000.pkl"
+    },
+    
+    "db": {
+        "rand_scale_min": 0.6,
+        "rand_scale_max": 1.4,
+        "rand_scale_step": 0.1,
+        "rand_scales": null,
+
+        "rand_crop": true,
+        "rand_color": true,
+
+        "border": 128,
+        "gaussian_bump": true,
+
+        "input_size": [511, 511],
+        "output_sizes": [[128, 128]],
+
+        "test_scales": [0.5, 0.75, 1, 1.25, 1.5],
+
+        "top_k": 40,
+        "categories": 80,
+        "aggr_weight": 0.1,
+        "scores_thresh": 0.1,
+        "center_thresh": 0.1,
+        "nms_threshold": 0.5,
+
+        "max_per_image": 100
+    }
+}

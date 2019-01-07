@@ -1,0 +1,12 @@
+*DS_Store*
+tools/vis*
+cache
+data
+data/
+cache/
+results/
+
+*.swp
+
+*.pyc
+*.o*

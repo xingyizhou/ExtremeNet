@@ -1,0 +1,4 @@
+[submodule "dextr"]
+	path = dextr
+	url = https://github.com/scaelles/DEXTR-PyTorch.git
+	branch = master

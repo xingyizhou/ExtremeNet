@@ -1,9 +1,9 @@
 # ExtremeNet: Training and Evaluation Code
 Code for **bottom-up** object detection by grouping extreme and center points:
 ![](readme/teaser.png)
-> [**Bottom-up Object Detection by Grouping Extreme and Center Points**](https://arxiv.org/abs/xxxx.xxxxx),            
+> [**Bottom-up Object Detection by Grouping Extreme and Center Points**](https://arxiv.org/abs/1901.08043),            
 > Xingyi Zhou, Jiacheng Zhuo, Philipp Kr&auml;henb&uuml;hl,        
-> *arXiv technical report*         
+> *arXiv technical report (1901.08043)*         
 
 This project is developed upon the [CornerNet code](https://github.com/princeton-vl/CornerNet) and contains the code from [Deep Extreme Cut](https://github.com/scaelles/DEXTR-PyTorch). Thanks to the original authors!
 
@@ -11,7 +11,7 @@ Contact: [zhouxy2017@gmail.com](mailto:zhouxy2017@gmail.com). Any questions or d
 
 ## Abstract 
 
-With the advent of deep learning, object detection drifted from a bottom-up to a top-down recognition problem. State of the art algorithms enumerate a near-exhaustive list of object locations and classify each into: object or not. In this paper, we show that bottom-up approaches still perform competitively. We detect four extreme points (top-most, left-most, bottom-most, right-most) and one center point of objects using a standard keypoint estimation network. We group the five keypoints into a bounding box if they are geometrically aligned. Object detection is then a purely appearance-based keypoint estimation problem, without region classification or implicit feature learning. The proposed method performs on-par with the state-of-the-art region based detection methods, with a bounding box AP of 43.2% on COCO test-dev. In addition, our estimated extreme points directly span a coarse octagonal mask, with a COCO Mask AP of 18.9%, much better than the Mask AP of vanilla bounding boxes. Extreme point guided segmentation further improves this to 34.1% Mask AP.
+With the advent of deep learning, object detection drifted from a bottom-up to a top-down recognition problem. State of the art algorithms enumerate a near-exhaustive list of object locations and classify each into: object or not. In this paper, we show that bottom-up approaches still perform competitively. We detect four extreme points (top-most, left-most, bottom-most, right-most) and one center point of objects using a standard keypoint estimation network. We group the five keypoints into a bounding box if they are geometrically aligned. Object detection is then a purely appearance-based keypoint estimation problem, without region classification or implicit feature learning. The proposed method performs on-par with the state-of-the-art region based detection methods, with a bounding box AP of 43.2% on COCO test-dev. In addition, our estimated extreme points directly span a coarse octagonal mask, with a COCO Mask AP of 18.9%, much better than the Mask AP of vanilla bounding boxes. Extreme point guided segmentation further improves this to 34.6% Mask AP.
 
 ## Installation
 The code was tested with [Anaconda](https://www.anaconda.com/download) Python 3.6 and [PyTorch]((http://pytorch.org/)) v0.4.1. After install Anaconda:
@@ -142,7 +142,7 @@ If you find this model useful for your resesarch, please use the following BibTe
     @inproceedings{zhou2019bottomup,
       title={Bottom-up Object Detection by Grouping Extreme and Center Points},
       author={Zhou, Xingyi and Zhuo, Jiacheng and Kr{\"a}henb{\"u}hl, Philipp},
-      booktitle={arXiv preprint arXiv:xxxx.xxxxx},
+      booktitle={arXiv preprint arXiv:1901.08043},
       year={2019}
     }
     

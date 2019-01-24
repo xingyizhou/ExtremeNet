@@ -110,14 +110,14 @@ After downloading our pre-trained model and the dataset,
   ~~~
   python test.py ExtremeNet [--suffix multi_scale]
   ~~~
-  The results on COCO validation set should be `40.3` box AP without `--suffix multi_scale` and `43.3` box AP with `--suffix multi_scale`. 
+  The results on COCO validation set should be `40.3` box AP ([download](https://drive.google.com/open?id=1oP3RJSayEt_O9R3LQnbSv2ZaD7E38_gd)) without `--suffix multi_scale` and `43.3` box AP ([download](https://drive.google.com/open?id=1VpnP8RTAMb8_QVAWvMwJeQB2ODP53S3e)) with `--suffix multi_scale`. 
 
 - After obtaining the detection results, run the following commands for instance segmentation:
 
   ~~~
   python eval_dextr_mask.py results/ExtremeNet/250000/validation/multi_scale/results.json
   ~~~
-  The results on COCO validation set should be `34.6` mask AP (The evaluation will be slow).
+  The results on COCO validation set should be `34.6` mask AP ([download](https://drive.google.com/open?id=14wzNND6JhPUGQU_He2CimXu-RT28F6LN))(The evaluation will be slow).
 
 - You can test with other hyper-parameters by creating a new config file (`ExtremeNet-<suffix>.json`) in `config/`. 
 

@@ -43,13 +43,12 @@ image_ext = ['jpg', 'jpeg', 'png', 'webp']
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Demo CornerNet")
-    parser.add_argument("--demo", help="demo image path or folders",
-                        default="", type=str)
     parser.add_argument("--cfg_file", help="config file", 
                         default='ExtremeNet', type=str)
-    parser.add_argument("--testiter", dest="testiter",
-                        help="test at iteration i",
-                        default=250000)
+    parser.add_argument("--demo", help="demo image path or folders",
+                        default="", type=str)
+    parser.add_argument("--model_path",
+                        default='cache/ExtremeNet_250000.pkl')
     parser.add_argument("--show_mask", action='store_true',
                         help="Run Deep extreme cut to obtain accurate mask")
 
@@ -101,13 +100,11 @@ if __name__ == "__main__":
     print("system config...")
     pprint.pprint(system_configs.full)
     
-    test_iter = system_configs.max_iter if args.testiter is None \
-                                        else args.testiter
-    print("loading parameters at iteration: {}".format(test_iter))
+    print("loading parameters: {}".format(args.model_path))
     print("building neural network...")
     nnet = NetworkFactory(None)
     print("loading parameters...")
-    nnet.load_params(test_iter)
+    nnet.load_pretrained_params(args.model_path)
     nnet.cuda()
     nnet.eval_mode()
 
@@ -147,6 +144,7 @@ if __name__ == "__main__":
         image_names = [args.demo]
 
     for image_id, image_name in enumerate(image_names):
+        print('Running ', image_name)
         image      = cv2.imread(image_name)
 
         height, width = image.shape[0:2]

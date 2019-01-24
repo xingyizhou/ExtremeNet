@@ -45,7 +45,7 @@ The code was tested with [Anaconda](https://www.anaconda.com/download) Python 3.
 - Run the demo 
 
     ~~~
-    Python demo.py ExtremeNet [--demo /path/to/image/or/folder] [--show_mask]
+    python demo.py [--demo /path/to/image/or/folder] [--show_mask]
     ~~~
 
     Contents in `[]` are optional. By default, it runs the sample images provided in `ExtremeNet_ROOT/images/` (from [Detectron](https://github.com/facebookresearch/Detectron/tree/master/demo)). We show the predicted extreme point heatmaps (combined four heatmaps and overlaid on the input image), the predicted center point heatmap, and the detection and octagon mask results. If setup correctly, the output will look like:
@@ -93,7 +93,7 @@ python setup.up install --user
               |-- val2017
               |-- test2017
   ~~~
-- Generate extreme point annotation from segmentation:
+### Generate extreme point annotation from segmentation:
     
     ~~~
     cd ExtremeNet_ROOT/tools/
@@ -124,7 +124,7 @@ After downloading our pre-trained model and the dataset,
 
 ## Training 
 
-You will need 5 12GB GPUs to reproduce our training. Our model is fine-tuned on the 10-GPU pre-trained [CornerNet model](https://drive.google.com/file/d/1UHjVzSG27Ms0VfSFeGYJ2h2AYZ6d4Le_/view?usp=sharing) (training from scratch may result in 2 AP lower based on our preliminary experiments). After downloading the CornerNet model and put it in `cache/`, run
+You will need 5x 12GB GPUs to reproduce our training. Our model is fine-tuned on the 10-GPU pre-trained [CornerNet model](https://drive.google.com/file/d/1UHjVzSG27Ms0VfSFeGYJ2h2AYZ6d4Le_/view?usp=sharing). After downloading the CornerNet model and put it in `cache/`, run
 
 ~~~
 python train.py ExtremeNet
@@ -135,6 +135,14 @@ You can resume a half-trained model by
 ~~~
 python train.py ExtremeNet --iter xxxx
 ~~~
+
+### Notes:
+
+- Training takes about 10 days in our Titan V GPUs. Train with 150000 iterations (about 6 days) will be 0.5 AP lower.
+- Training from scratch for the same iteration (250000) may result in 2 AP lower than fintuning from CornerNet, but can get higher performance (43.9AP on COCO val w/ multi-scale testing) if trained for (500000 iterations)[https://drive.google.com/file/d/1omiOUjWCrFbTJREypuZaODu0bOlF_7Fg/view?usp=sharing]
+- Changing the focal loss (implementation)[https://github.com/xingyizhou/ExtremeNet/blob/master/models/py_utils/kp_utils.py#L428] to (this)[https://github.com/xingyizhou/ExtremeNet/blob/master/models/py_utils/kp_utils.py#L405] can accelerate training, but costs more GPU memory.
+
+
 
 ## Citation
 If you find this model useful for your resesarch, please use the following BibTeX entry.

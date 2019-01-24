@@ -1,7 +1,7 @@
 {
     "system": {
         "dataset": "MSCOCOExtreme",
-        "batch_size": 38,
+        "batch_size": 24,
         "sampling_function": "kp_detection",
 
         "train_split": "train",
@@ -19,7 +19,7 @@
         "stepsize": 200000,
         "snapshot": 50000,
 
-        "chunk_sizes": [3, 5, 5, 5, 5, 5, 5, 5],
+        "chunk_sizes": [4, 5, 5, 5, 5],
 
         "data_dir": "./data",
 

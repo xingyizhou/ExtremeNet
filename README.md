@@ -110,14 +110,14 @@ After downloading our pre-trained model and the dataset,
   ~~~
   python test.py ExtremeNet [--suffix multi_scale]
   ~~~
-  The results on COCO validation set should be `40.3` box AP ([download](https://drive.google.com/open?id=1oP3RJSayEt_O9R3LQnbSv2ZaD7E38_gd)) without `--suffix multi_scale` and `43.3` box AP ([download](https://drive.google.com/open?id=1VpnP8RTAMb8_QVAWvMwJeQB2ODP53S3e)) with `--suffix multi_scale`. 
+  The results on COCO validation set should be [`40.3` box AP](https://drive.google.com/open?id=1oP3RJSayEt_O9R3LQnbSv2ZaD7E38_gd) without `--suffix multi_scale` and `43.3` box AP ([download](https://drive.google.com/open?id=1VpnP8RTAMb8_QVAWvMwJeQB2ODP53S3e)) with `--suffix multi_scale`. 
 
 - After obtaining the detection results, run the following commands for instance segmentation:
 
   ~~~
   python eval_dextr_mask.py results/ExtremeNet/250000/validation/multi_scale/results.json
   ~~~
-  The results on COCO validation set should be `34.6` mask AP ([download](https://drive.google.com/open?id=14wzNND6JhPUGQU_He2CimXu-RT28F6LN))(The evaluation will be slow).
+  The results on COCO validation set should be [`34.6` mask AP](https://drive.google.com/open?id=14wzNND6JhPUGQU_He2CimXu-RT28F6LN)(The evaluation will be slow).
 
 - You can test with other hyper-parameters by creating a new config file (`ExtremeNet-<suffix>.json`) in `config/`. 
 
@@ -139,8 +139,8 @@ python train.py ExtremeNet --iter xxxx
 ### Notes:
 
 - Training takes about 10 days in our Titan V GPUs. Train with 150000 iterations (about 6 days) will be 0.5 AP lower.
-- Training from scratch for the same iteration (250000) may result in 2 AP lower than fintuning from CornerNet, but can get higher performance (43.9AP on COCO val w/ multi-scale testing) if trained for (500000 iterations)[https://drive.google.com/file/d/1omiOUjWCrFbTJREypuZaODu0bOlF_7Fg/view?usp=sharing]
-- Changing the focal loss (implementation)[https://github.com/xingyizhou/ExtremeNet/blob/master/models/py_utils/kp_utils.py#L428] to (this)[https://github.com/xingyizhou/ExtremeNet/blob/master/models/py_utils/kp_utils.py#L405] can accelerate training, but costs more GPU memory.
+- Training from scratch for the same iteration (250000) may result in 2 AP lower than fintuning from CornerNet, but can get higher performance (43.9AP on COCO val w/ multi-scale testing) if trained for [500000 iterations](https://drive.google.com/file/d/1omiOUjWCrFbTJREypuZaODu0bOlF_7Fg/view?usp=sharing)
+- Changing the focal loss [implementation](https://github.com/xingyizhou/ExtremeNet/blob/master/models/py_utils/kp_utils.py#L428) to [this](https://github.com/xingyizhou/ExtremeNet/blob/master/models/py_utils/kp_utils.py#L405) can accelerate training, but costs more GPU memory.
 
 
 

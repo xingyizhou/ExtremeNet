@@ -145,7 +145,7 @@ python train.py ExtremeNet --iter xxxx
 
 
 ## Citation
-If you find this model useful for your resesarch, please use the following BibTeX entry.
+If you find this model useful for your research, please use the following BibTeX entry.
 
     @inproceedings{zhou2019bottomup,
       title={Bottom-up Object Detection by Grouping Extreme and Center Points},

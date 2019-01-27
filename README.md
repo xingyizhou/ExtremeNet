@@ -72,7 +72,7 @@ cd ExtremeNet_ROOT/data
 git clone https://github.com/cocodataset/cocoapi.git coco
 cd ExtremeNet_ROOT/data/coco/PythonAPI
 Make
-python setup.up install --user
+python setup.py install --user
 ~~~
 
 ### Downloading MS COCO Data

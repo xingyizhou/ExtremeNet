@@ -71,8 +71,8 @@ If you want to reproduce the results in the paper for benchmark evaluation and t
 cd ExtremeNet_ROOT/data
 git clone https://github.com/cocodataset/cocoapi.git coco
 cd ExtremeNet_ROOT/data/coco/PythonAPI
-Make
-python setup.up install --user
+make
+python setup.py install --user
 ~~~
 
 ### Downloading MS COCO Data

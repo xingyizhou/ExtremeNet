@@ -3,9 +3,9 @@ Code for **bottom-up** object detection by grouping extreme and center points:
 ![](readme/teaser.png)
 > [**Bottom-up Object Detection by Grouping Extreme and Center Points**](https://arxiv.org/abs/1901.08043),            
 > Xingyi Zhou, Jiacheng Zhuo, Philipp Kr&auml;henb&uuml;hl,        
-> *arXiv technical report (1901.08043)*         
+> *CVPR 2019 (arXiv 1901.08043)*         
 
-This project is developed upon the [CornerNet code](https://github.com/princeton-vl/CornerNet) and contains the code from [Deep Extreme Cut](https://github.com/scaelles/DEXTR-PyTorch). Thanks to the original authors!
+This project is developed upon the [CornerNet code](https://github.com/princeton-vl/CornerNet) and contains the code from [Deep Extreme Cut(DEXTR)](https://github.com/scaelles/DEXTR-PyTorch). Thanks to the original authors!
 
 Contact: [zhouxy2017@gmail.com](mailto:zhouxy2017@gmail.com). Any questions or discussions are welcomed! 
 
@@ -20,7 +20,7 @@ The code was tested with [Anaconda](https://www.anaconda.com/download) Python 3.
 
     ~~~
     ExtremeNet_ROOT=/path/to/clone/ExtremeNet
-    git clone --recursive https://github.com/xingyizhou/ExtremeNet ExtremeNet_ROOT
+    git clone --recursive https://github.com/xingyizhou/ExtremeNet $ExtremeNet_ROOT
     ~~~
 
 
@@ -34,7 +34,7 @@ The code was tested with [Anaconda](https://www.anaconda.com/download) Python 3.
 3. Compiling NMS (originally from [Faster R-CNN](https://github.com/rbgirshick/py-faster-rcnn/blob/master/lib/nms/cpu_nms.pyx) and [Soft-NMS](https://github.com/bharatsingh430/soft-nms/blob/master/lib/nms/cpu_nms.pyx)).
 
     ~~~
-    cd ExtremeNet_ROOT/external
+    cd $ExtremeNet_ROOT/external
     make
     ~~~
 
@@ -48,7 +48,7 @@ The code was tested with [Anaconda](https://www.anaconda.com/download) Python 3.
     python demo.py [--demo /path/to/image/or/folder] [--show_mask]
     ~~~
 
-    Contents in `[]` are optional. By default, it runs the sample images provided in `ExtremeNet_ROOT/images/` (from [Detectron](https://github.com/facebookresearch/Detectron/tree/master/demo)). We show the predicted extreme point heatmaps (combined four heatmaps and overlaid on the input image), the predicted center point heatmap, and the detection and octagon mask results. If setup correctly, the output will look like:
+    Contents in `[]` are optional. By default, it runs the sample images provided in `$ExtremeNet_ROOT/images/` (from [Detectron](https://github.com/facebookresearch/Detectron/tree/master/demo)). We show the predicted extreme point heatmaps (combined four heatmaps and overlaid on the input image), the predicted center point heatmap, and the detection and octagon mask results. If setup correctly, the output will look like:
     
     <img src='readme/extreme.png' align="center" width="400px"> <img src='readme/center.png' align="center" width="400px">
     
@@ -56,7 +56,7 @@ The code was tested with [Anaconda](https://www.anaconda.com/download) Python 3.
         <img src='readme/octagon.png' align="center" width="400px">
     </p>
 
-    If `--show_mask` is turned on, it further pipelined with [Deep Extreme Cut](https://github.com/scaelles/DEXTR-PyTorch) for instance segmentation. The output will look like:
+    If `--show_mask` is turned on, it further pipelined with [DEXTR](https://github.com/scaelles/DEXTR-PyTorch) for instance segmentation. The output will look like:
     <p align="center"> 
         <img src='readme/mask.png' align="center" width="400px">
     </p>
@@ -68,9 +68,9 @@ If you want to reproduce the results in the paper for benchmark evaluation and t
 
 ### Installing MS COCO APIs
 ~~~
-cd ExtremeNet_ROOT/data
+cd $ExtremeNet_ROOT/data
 git clone https://github.com/cocodataset/cocoapi.git coco
-cd ExtremeNet_ROOT/data/coco/PythonAPI
+cd $ExtremeNet_ROOT/data/coco/PythonAPI
 make
 python setup.py install --user
 ~~~
@@ -96,7 +96,7 @@ python setup.py install --user
 ### Generate extreme point annotation from segmentation:
     
     ~~~
-    cd ExtremeNet_ROOT/tools/
+    cd $ExtremeNet_ROOT/tools/
     python gen_coco_extreme_points.py
     ~~~
   It generates `instances_extreme_train2017.json` and `instances_extreme_val2017.json` in `data/coco/annotations/`. 
@@ -110,7 +110,7 @@ After downloading our pre-trained model and the dataset,
   ~~~
   python test.py ExtremeNet [--suffix multi_scale]
   ~~~
-  The results on COCO validation set should be [`40.3` box AP](https://drive.google.com/open?id=1oP3RJSayEt_O9R3LQnbSv2ZaD7E38_gd) without `--suffix multi_scale` and `43.3` box AP ([download](https://drive.google.com/open?id=1VpnP8RTAMb8_QVAWvMwJeQB2ODP53S3e)) with `--suffix multi_scale`. 
+  The results on COCO validation set should be [`40.3` box AP](https://drive.google.com/open?id=1oP3RJSayEt_O9R3LQnbSv2ZaD7E38_gd) without `--suffix multi_scale` and [`43.3` box AP](https://drive.google.com/open?id=1VpnP8RTAMb8_QVAWvMwJeQB2ODP53S3e) with `--suffix multi_scale`. 
 
 - After obtaining the detection results, run the following commands for instance segmentation:
 
@@ -150,7 +150,7 @@ If you find this model useful for your research, please use the following BibTeX
     @inproceedings{zhou2019bottomup,
       title={Bottom-up Object Detection by Grouping Extreme and Center Points},
       author={Zhou, Xingyi and Zhuo, Jiacheng and Kr{\"a}henb{\"u}hl, Philipp},
-      booktitle={arXiv preprint arXiv:1901.08043},
+      booktitle={CVPR},
       year={2019}
     }
     

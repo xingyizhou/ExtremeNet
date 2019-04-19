@@ -18,8 +18,10 @@ def vis_mask(img, mask, col, alpha=0.4, show_border=True, border_thick=2):
     img[idx[0], idx[1], :] += alpha * col
 
     if show_border:
-        _, contours, _ = cv2.findContours(
-            mask.copy(), cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+        # How to use `cv2.findContours` in different OpenCV versions?
+        # https://stackoverflow.com/questions/48291581/how-to-use-cv2-findcontours-in-different-opencv-versions/48292371#48292371
+        contours = cv2.findContours(
+            mask.copy(), cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)[-2]
         cv2.drawContours(img, contours, -1, _WHITE, border_thick, cv2.LINE_AA)
 
     return img.astype(np.uint8)
